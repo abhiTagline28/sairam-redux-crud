@@ -1,4 +1,4 @@
-import { ADD_USER, ADD_USER_ERROR, MAINTAIN_USERLIST } from "../constants";
+import { ADD_USER, ADD_USER_ERROR } from "../constants";
 
 const initialState = {
     userList: [],
@@ -19,11 +19,6 @@ export default function (state = initialState, action) {
                 ...state,
                 errorMessage: action.errorMessage,
                 showError: true
-            }
-        case MAINTAIN_USERLIST:
-            return {
-                ...state,
-                userList: [...action.userList]
             }
         default:
             return state;

@@ -6,25 +6,27 @@ export const submit = () => (dispatch, getState) => {
     const state = getState();
     const clonedForm = { ...state.forms.form }
     let userList = []
-    Object.values(clonedForm).forEach(({ pattern, value }, index) => {
+    const formMap = Object.values(clonedForm)
+
+    formMap.forEach(({ pattern, value }, index) => {
         const key = Object.keys(clonedForm)[index]
-        const isPassword = key === 'password'
+        const isPassword = (key === 'password')
         if (value.trim().length) {
             const validated = validation(pattern, value, isPassword)
             if (!validated) {
-                Object.values(clonedForm)[index].showError = true;
+                formMap[index].showError = true;
             }
             else {
-                Object.values(clonedForm)[index].showError = false;
+                formMap[index].showError = false;
             }
         }
         else {
-            Object.values(clonedForm)[index].showError = true;
+            formMap[index].showError = true;
         }
         userList = { ...userList, [key]: value }
     });
 
-    const isValid = Object.values(clonedForm).some(({ showError }) => showError === true)
+    const isValid = formMap.some(({ showError }) => showError === true)
     dispatch({
         type: HANDLE_SUBMIT,
         validatedForm: clonedForm,
@@ -34,18 +36,19 @@ export const submit = () => (dispatch, getState) => {
     if (!isValid) {
         const isExist = [...state.user.userList].some(({ email }) => email === clonedForm.email.value)
         if (!isExist) {
-            let newValues = {};
-            Object.values(clonedForm).forEach(({ value, ...rest }, index) => {
-                newValues = { ...newValues, [Object.keys(clonedForm)[index]]: { ...rest, value: '' } }
-            })
+
+            for (let index = 0; index < formMap.length; index++) {
+                formMap[index].value = ''
+            }
 
             dispatch({
                 type: ADD_USER,
                 userList
             })
+
             dispatch({
                 type: CLEAR_FORM,
-                form: newValues
+                form: clonedForm
             })
         } else {
 

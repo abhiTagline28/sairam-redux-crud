@@ -7,7 +7,7 @@ import { submit } from '../redux/actions/formSubmitAction'
 
 const SignUp = () => {
     const formValues = useSelector(state => state.forms.form)
-    // let formValues
+
     const dispatch = useDispatch()
     const handleSubmit = e => {
         e.preventDefault()

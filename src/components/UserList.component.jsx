@@ -1,10 +1,9 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 export default function UserList() {
     const userData = useSelector(state => state.user)
     const { errorMessage, showError, userList } = userData
-    const dispatch = useDispatch()
 
     return (
         <div>
