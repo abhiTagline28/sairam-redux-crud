@@ -19,7 +19,7 @@ export const submit = () => (dispatch, getState) => {
         userList = { ...userList, [key]: value }
     });
 
-    const isValid = formMap.some(({ showError }) => showError === true)
+    const isValid = formMap.some(({ showError }) => showError)
     dispatch({
         type: HANDLE_SUBMIT,
         validatedForm: clonedForm,
