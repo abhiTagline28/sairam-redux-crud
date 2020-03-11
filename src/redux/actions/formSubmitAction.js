@@ -10,15 +10,8 @@ export const submit = () => (dispatch, getState) => {
 
     formMap.forEach(({ pattern, value }, index) => {
         const key = Object.keys(clonedForm)[index]
-        const isPassword = (key === 'password')
         if (value.trim().length) {
-            const validated = validation(pattern, value, isPassword)
-            if (!validated) {
-                formMap[index].showError = true;
-            }
-            else {
-                formMap[index].showError = false;
-            }
+            formMap[index].showError = !validation(pattern, value)
         }
         else {
             formMap[index].showError = true;

@@ -14,6 +14,6 @@ export const passwordValidation = password => {
 }
 
 export const userNameValidation = value => {
-    const regex = /^([a-zA-Z]+(.)?[\s]*)$/
+    const regex = /^[A-Za-z\s]+$/
     return regex.test(value)
 }

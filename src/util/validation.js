@@ -1,8 +1,8 @@
 import { email, password, username, confirmPassword } from "./validationConstants";
 import { emailValidation, passwordValidation, userNameValidation } from "./regex";
 let passwordValue = ''
-export default (pattern, value, ispassword) => {
-    if (ispassword) {
+export default (pattern, value) => {
+    if (pattern === password) {
         passwordValue = value
     }
     switch (pattern) {
