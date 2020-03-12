@@ -16,7 +16,9 @@ export const submit = () => (dispatch, getState) => {
         else {
             formMap[index].showError = true;
         }
-        userList = { ...userList, [key]: value }
+        if (key !== 'confirmPassword') {
+            userList = { ...userList, [key]: value }
+        }
     });
 
     const isValid = formMap.some(({ showError }) => showError)

@@ -1,20 +1,19 @@
 import React from "react";
 export default ({ theadKeyMap, tbodyValueMap }) => (
-
-    <table key={Math.random()} style={{ width: '50%', margin: '0 auto' }}>
+    <table style={{ width: '50%', margin: '0 auto' }}>
         <thead>
             <tr>
                 {
-                    theadKeyMap.map(value => <th key={value} >{value.toUpperCase()}</th>)
+                    theadKeyMap.map(value => <th key={value}>{value.toUpperCase()}</th>)
                 }
             </tr>
         </thead>
         <tbody>
             {
-                tbodyValueMap.map(({ ...all }, index) => {
+                tbodyValueMap.map((value, index) => {
                     return <tr key={index}>
                         {
-                            Object.values(all).map((values, index) => {
+                            Object.values(value).map((values, index) => {
                                 return <td key={index}>{values}</td>
                             })
                         }

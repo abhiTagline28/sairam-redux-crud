@@ -34,7 +34,7 @@ export default {
     },
     age: {
         type: 'text',
-        value: '11',
+        value: '25',
         isRequired: true,
         showError: false,
         errorMessage: 'age is required',
