@@ -1,5 +1,5 @@
-import { email, password, username, confirmPassword } from "./validationConstants";
-import { emailValidation, passwordValidation, userNameValidation } from "./regex";
+import { email, password, alphabetWithSpace, confirmPassword, number } from "./validationConstants";
+import { emailValidation, passwordValidation, userNameValidation, numberValidation } from "./regex";
 let passwordValue = ''
 export default (pattern, value) => {
     if (pattern === password) {
@@ -10,10 +10,12 @@ export default (pattern, value) => {
             return emailValidation(value)
         case password:
             return passwordValidation(value)
-        case username:
+        case alphabetWithSpace:
             return userNameValidation(value)
         case confirmPassword:
             return (value === passwordValue)
+        case number:
+            return numberValidation(value)
         default:
             return false;
     }

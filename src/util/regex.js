@@ -17,3 +17,5 @@ export const userNameValidation = value => {
     const regex = /^[A-Za-z\s]+$/
     return regex.test(value)
 }
+
+export const numberValidation = value => (/^[0-9]+$/).test(value)

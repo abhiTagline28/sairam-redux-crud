@@ -1,33 +1,18 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { useSelector } from 'react-redux'
+import Table from '../reusable/Table'
 
 export default function UserList() {
     const userData = useSelector(state => state.user)
     const { errorMessage, showError, userList } = userData
-
+    const key = userList.length ? Object.keys(userList[0]) : []
     return (
-        <div>
+        <Fragment>
             {showError && errorMessage}
-            <table style={{ width: "50%", margin: '0 auto' }}>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Password</th>
-                        <th>Confirm Password</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {userList.map(({ userName, email, password, confirmPassword }, index) => {
-                        return <tr key={index}>
-                            <td>{userName}</td>
-                            <td>{email}</td>
-                            <td>{password}</td>
-                            <td>{confirmPassword}</td>
-                        </tr>
-                    })}
-                </tbody>
-            </table>
-        </div>
+            {key.length ?
+                <Table theadKeyMap={key} tbodyValueMap={userList} />
+                : null
+            }
+        </Fragment>
     )
 }

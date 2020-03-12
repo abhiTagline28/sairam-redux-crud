@@ -1,4 +1,4 @@
-import { email, password, username, confirmPassword } from "../../util/validationConstants";
+import { email, password, alphabetWithSpace, confirmPassword, number } from "../../util/validationConstants";
 export default {
     userName: {
         type: 'text',
@@ -6,7 +6,7 @@ export default {
         isRequired: true,
         showError: false,
         errorMessage: 'Only Alphabets',
-        pattern: username
+        pattern: alphabetWithSpace
     },
     email: {
         type: 'email',
@@ -31,5 +31,13 @@ export default {
         showError: false,
         errorMessage: 'confirm password must match',
         pattern: confirmPassword
+    },
+    age: {
+        type: 'text',
+        value: '11',
+        isRequired: true,
+        showError: false,
+        errorMessage: 'age is required',
+        pattern: number
     }
 }
