@@ -5,19 +5,22 @@ export const submit = () => (dispatch, getState) => {
 
     const state = getState();
     const clonedForm = { ...state.forms.form }
+    const cloneduserList = [...state.user.userList]
     let userList = []
+    const id = cloneduserList.length + 1
     const formMap = Object.values(clonedForm)
 
     formMap.forEach(({ pattern, value }, index) => {
         const key = Object.keys(clonedForm)[index]
         if (value.trim().length) {
-            formMap[index].showError = !validation(pattern, value)
+            const validationResponse = !validation(pattern, value)
+            formMap[index].showError = validationResponse
+            if (key !== 'confirmPassword' && !validationResponse) {
+                userList = { ...userList, id, [key]: value, }
+            }
         }
         else {
             formMap[index].showError = true;
-        }
-        if (key !== 'confirmPassword') {
-            userList = { ...userList, [key]: value }
         }
     });
 
@@ -29,7 +32,7 @@ export const submit = () => (dispatch, getState) => {
     })
 
     if (!isValid) {
-        const isExist = [...state.user.userList].some(({ email }) => email === clonedForm.email.value)
+        const isExist = cloneduserList.some(({ email }) => email === clonedForm.email.value)
         if (!isExist) {
 
             for (let index = 0; index < formMap.length; index++) {
@@ -37,13 +40,13 @@ export const submit = () => (dispatch, getState) => {
             }
 
             dispatch({
-                type: ADD_USER,
-                userList
+                type: CLEAR_FORM,
+                form: clonedForm
             })
 
             dispatch({
-                type: CLEAR_FORM,
-                form: clonedForm
+                type: ADD_USER,
+                userList
             })
         } else {
 

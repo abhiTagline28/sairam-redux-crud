@@ -20,7 +20,7 @@ export default function (state = initialState, action) {
         case CLEAR_FORM:
             return {
                 ...state,
-                form: { ...action.form },
+                form: action.form,
                 isvalid: false,
             }
         default:
