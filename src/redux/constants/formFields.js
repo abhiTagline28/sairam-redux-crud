@@ -6,7 +6,8 @@ export default {
         isRequired: true,
         showError: false,
         errorMessage: 'Only Alphabets',
-        pattern: alphabetWithSpace
+        pattern: alphabetWithSpace,
+        autoComplete: "username",
     },
     email: {
         type: 'email',
@@ -14,7 +15,8 @@ export default {
         isRequired: true,
         showError: false,
         errorMessage: 'Invalid Email',
-        pattern: email
+        pattern: email,
+        autoComplete: "username",
     },
     password: {
         type: 'password',
@@ -22,7 +24,8 @@ export default {
         isRequired: true,
         showError: false,
         errorMessage: 'Atleast 8 character with one symbol,small,capital letter',
-        pattern: password
+        pattern: password,
+        autoComplete: "new-password",
     },
     confirmPassword: {
         type: 'password',
@@ -30,7 +33,8 @@ export default {
         isRequired: true,
         showError: false,
         errorMessage: 'confirm password must match',
-        pattern: confirmPassword
+        pattern: confirmPassword,
+        autoComplete: "new-password",
     },
     age: {
         type: 'text',
