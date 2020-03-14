@@ -1,5 +1,6 @@
-import { HANDLE_SUBMIT, ADD_USER, ADD_USER_ERROR, CLEAR_FORM } from "../constants";
+import { HANDLE_SUBMIT, ADD_USER, ADD_USER_ERROR } from "../constants";
 import validation from "../../util/validation";
+import clearFormAction from "./clearFormAction";
 
 export const submit = () => (dispatch, getState) => {
 
@@ -34,16 +35,7 @@ export const submit = () => (dispatch, getState) => {
     if (!isValid) {
         const isExist = cloneduserList.some(({ email }) => email === clonedForm.email.value)
         if (!isExist) {
-
-            for (let index = 0; index < formMap.length; index++) {
-                formMap[index].value = ''
-            }
-
-            dispatch({
-                type: CLEAR_FORM,
-                form: clonedForm
-            })
-
+            dispatch(clearFormAction())
             dispatch({
                 type: ADD_USER,
                 userList
