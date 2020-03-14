@@ -14,6 +14,11 @@ const SignUp = () => {
         dispatch(submit())
     }
 
+    const handleChange = e => {
+        const { value, name } = e.target
+        dispatch(onChange(name, value))
+    }
+
     const buttonAttributes = [
         {
             value: 'Sign Up',
@@ -25,10 +30,9 @@ const SignUp = () => {
             onClick: () => dispatch(clearFormAction()),
         }
     ]
+
     return (
-        <Form
-            {...{ formAttributes, handleSubmit, buttonAttributes }}
-            handleChange={(e) => dispatch(onChange(e.target.name, e.target.value))} />
+        <Form {...{ formAttributes, handleSubmit, buttonAttributes, handleChange }} />
     )
 }
 

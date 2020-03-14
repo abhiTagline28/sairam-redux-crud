@@ -17,9 +17,15 @@ const Form = ({ formAttributes, handleChange, handleSubmit, buttonAttributes }) 
             })
         }
         {
-            buttonAttributes.map(({ value, ...other }, index) => {
-                return <CustomButton {...{ ...other }} key={index}>{value}</CustomButton>
-            })
+            Array.isArray(buttonAttributes)
+                ?
+                buttonAttributes.map(({ value, ...other }, index) => {
+                    return <CustomButton {...{ ...other }} key={index}>{value}</CustomButton>
+                })
+                : <CustomButton
+                    type={buttonAttributes.type}
+                    onClick={buttonAttributes.onClick}
+                >{buttonAttributes.value}</CustomButton>
         }
     </form >
 )
