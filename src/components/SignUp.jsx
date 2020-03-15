@@ -27,6 +27,7 @@ const SignUp = () => {
         {
             value: 'Clear',
             type: 'button',
+            typeOf: 'clear',
             onClick: () => dispatch(clearFormAction()),
         }
     ]

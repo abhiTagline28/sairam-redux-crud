@@ -1,5 +1,6 @@
 import React from "react";
-export default ({ theadKeyMap, tbodyValueMap }) => (
+import ButtonMapping from "./ButtonMapping";
+export default ({ theadKeyMap, tbodyValueMap, buttonAttributes }) => (
     <table style={{ width: '50%', margin: '0 auto' }}>
         <thead>
             <tr>
@@ -17,6 +18,9 @@ export default ({ theadKeyMap, tbodyValueMap }) => (
                                 return <td key={index}>{values}</td>
                             })
                         }
+                        <td>
+                            <ButtonMapping buttonAttributes={buttonAttributes} id={value.id} />
+                        </td>
                     </tr>
                 })
             }

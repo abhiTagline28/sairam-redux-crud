@@ -18,6 +18,14 @@ export default {
         pattern: email,
         autoComplete: "username",
     },
+    age: {
+        type: 'text',
+        value: '25',
+        isRequired: true,
+        showError: false,
+        errorMessage: 'age is required',
+        pattern: number
+    },
     password: {
         type: 'password',
         value: 'Qqqqqq!1',
@@ -36,12 +44,4 @@ export default {
         pattern: confirmPassword,
         autoComplete: "new-password",
     },
-    age: {
-        type: 'text',
-        value: '25',
-        isRequired: true,
-        showError: false,
-        errorMessage: 'age is required',
-        pattern: number
-    }
 }

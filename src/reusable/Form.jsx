@@ -1,7 +1,7 @@
 import React from 'react'
 import CustomInput from './CustomInput'
 import { capitalize, camelCaseSpace } from '../util/regex'
-import CustomButton from './CustomButton'
+import ButtonMapping from './ButtonMapping'
 
 const Form = ({ formAttributes, handleChange, handleSubmit, buttonAttributes }) => (
     <form onSubmit={handleSubmit}>
@@ -17,15 +17,7 @@ const Form = ({ formAttributes, handleChange, handleSubmit, buttonAttributes }) 
             })
         }
         {
-            Array.isArray(buttonAttributes)
-                ?
-                buttonAttributes.map(({ value, ...other }, index) => {
-                    return <CustomButton {...{ ...other }} key={index}>{value}</CustomButton>
-                })
-                : <CustomButton
-                    type={buttonAttributes.type}
-                    onClick={buttonAttributes.onClick}
-                >{buttonAttributes.value}</CustomButton>
+            <ButtonMapping buttonAttributes={buttonAttributes} />
         }
     </form >
 )
