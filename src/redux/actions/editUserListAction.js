@@ -13,7 +13,9 @@ export const editUserList = (editId) => (dispatch, getState) => {
         }
         dispatch({
             type: EDIT_USER,
-            form: clonedFormList
+            form: clonedFormList,
+            isEdit: true,
+            editId: id
         })
     }
 }

@@ -15,3 +15,5 @@ export const passwordValidation = password => {
 export const stringWithSpaceValidation = value => /^[A-Za-z\s]+$/.test(value)
 
 export const numberValidation = value => /^[0-9]+$/.test(value)
+
+export const findIndex = (list, findingId) => list.findIndex(({ id }) => id === findingId)

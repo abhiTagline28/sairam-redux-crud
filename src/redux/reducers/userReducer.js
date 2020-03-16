@@ -1,4 +1,4 @@
-import { ADD_USER, ADD_USER_ERROR, DELETE_USER } from "../constants";
+import { ADD_USER, ADD_USER_ERROR, DELETE_USER, UPDATE_USER } from "../constants";
 
 const initialState = {
     userList: [],
@@ -24,6 +24,11 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 userList: action.clonedUserList
+            }
+        case UPDATE_USER:
+            return {
+                ...state,
+                userList: action.clonedUserList,
             }
         default:
             return state;

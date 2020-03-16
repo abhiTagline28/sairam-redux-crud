@@ -3,6 +3,8 @@ import formFields from '../constants/formFields'
 const initialState = {
     isvalid: false,
     form: { ...formFields },
+    isEdit: false,
+    editId: 0
 }
 export default function (state = initialState, action) {
     switch (action.type) {
@@ -22,11 +24,15 @@ export default function (state = initialState, action) {
                 ...state,
                 form: action.form,
                 isvalid: false,
+                isEdit: false,
+                editId: 0
             }
         case EDIT_USER:
             return {
                 ...state,
-                form: action.form
+                form: action.form,
+                isEdit: action.isEdit,
+                editId: action.editId
             }
         default:
             return state;
