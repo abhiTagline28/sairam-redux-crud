@@ -2,7 +2,8 @@ import { ONCHANGE, HANDLE_SUBMIT, CLEAR_FORM, EDIT_USER } from "../constants";
 import formFields from '../constants/formFields'
 const initialState = {
     isvalid: false,
-    form: { ...formFields },
+    // form: { ...formFields },
+    form: {},
     isEdit: false,
     editId: 0
 }

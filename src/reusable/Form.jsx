@@ -6,7 +6,7 @@ import ButtonMapping from './ButtonMapping'
 const Form = ({ formAttributes, handleChange, handleSubmit, buttonAttributes }) => (
     <form onSubmit={handleSubmit}>
         {
-            Object.values(formAttributes).map(({ pattern, ...all }, index) => {
+            Object.values(formAttributes).map(({ ...all }, index) => {
                 const name = Object.keys(formAttributes)[index]
                 return (< CustomInput
                     key={index}
