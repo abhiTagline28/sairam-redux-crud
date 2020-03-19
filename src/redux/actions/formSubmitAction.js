@@ -2,25 +2,17 @@ import { ADD_USER, ADD_USER_ERROR } from "../constants";
 import clearFormAction from "./clearFormAction";
 import validationSelector from "../selectors/validationSelector";
 
-export const submit = () => (dispatch, getState) => {
+export const submit = (list) => (dispatch, getState) => {
 
     const state = getState();
-    const clonedForm = { ...state.forms.form }
-    const isValid = validationSelector(state, dispatch)
-
+    const { isValid, form } = validationSelector(list, state, dispatch)
     if (isValid) {
         const cloneduserList = [...state.user.userList]
-        let userList = []
-        const id = cloneduserList.length + 1
-        const formMap = Object.values(clonedForm)
-        const isExist = cloneduserList.some(({ email }) => email === clonedForm.email.value)
+        const isExist = cloneduserList.some(({ email }) => email === form.email)
         if (!isExist) {
-            formMap.forEach(({ pattern, value }, index) => {
-                const key = Object.keys(clonedForm)[index]
-                if (key !== 'confirmPassword') {
-                    userList = { ...userList, id, [key]: value, }
-                }
-            })
+            let userList = []
+            const id = cloneduserList.length + 1
+            userList = { id, ...form }
             dispatch(clearFormAction())
             dispatch({
                 type: ADD_USER,

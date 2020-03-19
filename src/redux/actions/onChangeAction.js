@@ -1,18 +1,18 @@
 import { ONCHANGE } from "../constants";
 import validation from "../../util/validation";
 
-export const onChange = (name, value) => (dispatch, getState) => {
+export const onChange = (name, value, pattern) => (dispatch, getState) => {
     const state = getState()
     const formClone = { ...state.forms.form }
-    // console.log('name', name)
-    // console.log('value', value)
+    const formErrorClone = { ...state.forms.formError }
     formClone[name] = value
-    // formClone[name].value = value
-    // formClone[name].showError = !validation(formClone[name].pattern, value)
+    formErrorClone[name]= !validation(pattern, value)
     dispatch(
         {
             type: ONCHANGE,
-            updatedForm: formClone
+            updatedForm: formClone,
+            updatedformError: formErrorClone
+
         }
     )
 }

@@ -1,24 +1,24 @@
 import validation from "../../util/validation";
 import { HANDLE_SUBMIT } from "../constants";
+import { undefinedValidation, objectValues } from "../../util/regex";
 
-export default (state, dispatch) => {
-    const clonedForm = { ...state.forms.form }
-    const formMap = Object.values(clonedForm)
-    formMap.forEach(({ pattern, value }, index) => {
-        if (value.trim().length) {
-            const validationResponse = !validation(pattern, value)
-            formMap[index].showError = validationResponse
-        }
-        else {
-            formMap[index].showError = true;
-        }
+export default (list, state, dispatch) => {
+    const formError = { ...state.forms.formError }
+    const form = { ...state.forms.form }
+    const formMap = objectValues(list)
+    formMap.forEach(({ pattern }, index) => {
+        const name = Object.keys(list)[index]
+        const value = undefinedValidation(objectValues(form)[index], true)
+        if (value) return formError[name] = !validation(pattern, value)
+        return formError[name] = true;
+
     });
-
-    const isValid = formMap.some(({ showError }) => showError)
+    const isValid = !objectValues(formError).some(formErrorValue => formErrorValue)
     dispatch({
         type: HANDLE_SUBMIT,
-        validatedForm: clonedForm,
+        form,
+        formError,
         isValid: !isValid
     })
-    return !isValid
+    return { isValid, form }
 }
