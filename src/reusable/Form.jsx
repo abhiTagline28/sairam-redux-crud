@@ -1,6 +1,6 @@
 import React from 'react'
 import CustomInput from './CustomInput'
-import { capitalize, camelCaseSpace, undefinedValidation, objectValues } from '../util/regex'
+import { capitalize, camelCaseSpace, undefinedValidation, objectValues, objectKeys } from '../util/regex'
 import ButtonMapping from './ButtonMapping'
 import { useDispatch, useSelector } from 'react-redux'
 import { onChange } from '../redux/actions/onChangeAction'
@@ -16,7 +16,7 @@ export default ({ formAttributes, handleSubmit, buttonAttributes }) => {
     return <form onSubmit={handleSubmit}>
         {
             objectValues(formAttributes).map(({ ...all }, index) => {
-                const name = Object.keys(formAttributes)[index]
+                const name = objectKeys(formAttributes)[index]
                 const showError = undefinedValidation(formError[name], true)
                 const value = undefinedValidation(form[name], false)
                 return (<CustomInput

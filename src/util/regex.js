@@ -21,3 +21,5 @@ export const findIndex = (list, findingId) => list.findIndex(({ id }) => id === 
 export const undefinedValidation = (value, isBoolean) => value !== undefined ? value : (isBoolean ? false : '')
 
 export const objectValues = (list) => Object.values(list)
+
+export const objectKeys = (list) => Object.keys(list)
