@@ -14,12 +14,21 @@ export const passwordValidation = password => {
 
 export const stringWithSpaceValidation = value => /^[A-Za-z\s]+$/.test(value)
 
-export const numberValidation = value => /^[0-9]+$/.test(value)
+export const isNumber = value => /^[0-9]+$/.test(value)
 
 export const findIndex = (list, findingId) => list.findIndex(({ id }) => id === findingId)
 
-export const undefinedValidation = (value, isBoolean) => value !== undefined ? value : (isBoolean ? false : '')
+export const isEmpty = (value, isBoolean) => value !== undefined ? value : (isBoolean ? false : '')
 
 export const objectValues = (list) => Object.values(list)
 
 export const objectKeys = (list) => Object.keys(list)
+
+export const alphabeticalSorting = (object) => (
+    Object.entries(object)
+        .sort()
+        .reduce((obj, [k, v]) => ({
+            ...obj,
+            [k]: v
+        }), {})
+)

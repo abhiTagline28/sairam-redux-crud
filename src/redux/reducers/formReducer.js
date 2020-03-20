@@ -1,6 +1,12 @@
 import { ONCHANGE, HANDLE_SUBMIT, CLEAR_FORM, EDIT_USER } from "../constants";
 const initialState = {
-    form: {},
+    form: {
+        userName: "sairam",
+        email: "sairam.beti.67@gmail.com",
+        age: "11",
+        password: "Qqqqqq!1",
+        confirmPassword: "Qqqqqq!1"
+    },
     formError: {},
     isEdit: false,
     editId: 0

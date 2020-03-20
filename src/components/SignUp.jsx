@@ -12,7 +12,7 @@ const SignUp = () => {
     const handleSubmit = e => {
         e.preventDefault()
         if (!isEdit) return dispatch(submit(formAttributes))
-        return dispatch(updateUserList())
+        return dispatch(updateUserList(formAttributes))
     }
 
     const buttonAttributes = [

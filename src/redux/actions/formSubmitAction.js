@@ -1,6 +1,7 @@
 import { ADD_USER, ADD_USER_ERROR } from "../constants";
 import clearFormAction from "./clearFormAction";
 import validationSelector from "../selectors/validationSelector";
+import { alphabeticalSorting } from "../../util/regex";
 
 export const submit = (list) => (dispatch, getState) => {
 
@@ -12,7 +13,7 @@ export const submit = (list) => (dispatch, getState) => {
         if (!isExist) {
             let userList = []
             const id = cloneduserList.length + 1
-            userList = { id, ...form }
+            userList = { id, ...alphabeticalSorting(form) }
             dispatch(clearFormAction())
             dispatch({
                 type: ADD_USER,
