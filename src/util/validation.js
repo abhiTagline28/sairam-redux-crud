@@ -3,7 +3,7 @@ import { emailValidation, passwordValidation, stringWithSpaceValidation, numberV
 let passwordValue = ''
 export default (pattern, value) => {
     if (pattern === password) {
-        passwordValue = value
+        passwordValue = value.trim().length > 0 ? value : false
     }
     switch (pattern) {
         case email:

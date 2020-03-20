@@ -2,7 +2,6 @@ import { ONCHANGE, HANDLE_SUBMIT, CLEAR_FORM, EDIT_USER } from "../constants";
 const initialState = {
     form: {},
     formError: {},
-    formErrorPattern: {},
     isEdit: false,
     editId: 0
 }
@@ -12,15 +11,13 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 form: action.updatedForm,
-                formError: action.updatedformError,
-                formErrorPattern: action.updatedformErrorPattern
+                formError: action.updatedFormError,
             };
         case HANDLE_SUBMIT:
             return {
                 ...state,
                 form: action.form,
                 formError: action.formError,
-                formErrorPattern: action.formErrorPattern
             }
         case CLEAR_FORM:
             return {
