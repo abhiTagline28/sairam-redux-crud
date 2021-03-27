@@ -27,10 +27,9 @@ const SignUp = () => {
             onClick: () => dispatch(clearFormAction()),
         }
     ]
-
+    
     return (
         <Form {...{ formAttributes, handleSubmit, buttonAttributes }} />
     )
 }
-
 export default memo(SignUp)
